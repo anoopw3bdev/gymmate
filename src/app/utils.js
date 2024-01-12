@@ -5,9 +5,9 @@ export const getAvatar = (name="") => {
 export const getMembershipColor = (type) => {
     switch (type) {
         case "Platinum":
-            return "bg-gray-200"
+            return "bg-teal-600"
         case "Gold":
-            return "bg-yellow-300"
+            return "bg-orange-400"
         default:
             return "bg-gray-400"
     }

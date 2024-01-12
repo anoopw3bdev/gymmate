@@ -105,7 +105,7 @@ const MemberTable = () => {
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">{data.age}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">{data.gender}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <span className={`${getMembershipColor(data.membershipType)} py-1 px-2 rounded-md`}>
+                                        <span className={`${getMembershipColor(data.membershipType)} py-1 px-2 rounded-md text-white`}>
                                         {data.membershipType}
                                         </span>
                                     </td>

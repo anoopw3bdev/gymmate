@@ -1,9 +1,7 @@
-import MembersIcon from "../../../public/assets/icons/membersIcon";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../public/assets/images/logo.png";
-import CalendarIcon from "../../../public/assets/icons/calendarIcon";
-import DocumentsIcon from "../../../public/assets/icons/documentsIcon";
+import { sideBarItems } from "../constants";
 
 const SideBar = () => {
   return (
@@ -29,33 +27,21 @@ const SideBar = () => {
         </div>
         <nav className="p-6 w-full h-full pt-28">
             <ul className="space-y-1.5 flex flex-col align-middle">
-            <li>
-                <Link 
-                    className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                    href="/dashboard/members"
-                >
-                    <MembersIcon/>
-                    Members
-                </Link>
-            </li>
-
-            <li>
-                <Link 
-                    className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" 
-                    href="#"
-                >
-                <CalendarIcon/>
-                Attendance
-            </Link></li>
-            <li>
-                <Link 
-                    className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" 
-                    href="#"
-                >
-                <DocumentsIcon/>
-                Document center
-                </Link>
-            </li>
+            {
+                sideBarItems.map((item, index) => {
+                    return(
+                        <li key={index}>
+                            <Link 
+                                className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                href={item.href}
+                            >
+                                {item.icon}
+                                {item.title}
+                            </Link>
+                        </li> 
+                    )
+                })
+            }
             </ul>
         </nav>
     </div>

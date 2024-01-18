@@ -1,5 +1,9 @@
-import React from 'react'
+"use client"
+
+import { useState } from 'react'
 import { getMembershipColor } from '../utils'
+import Drawer from './Drawer'
+
 
 const sampleData = [
     {
@@ -78,6 +82,14 @@ const sampleData = [
 ]
 
 const MemberTable = () => {
+  const [showMemberDetails, setShowMemeberDetails] = useState(false);
+  const [selectedRow, setSelectedRow] = useState({});
+
+  const handleRowClick = (data) => {
+    setSelectedRow(data);
+    setShowMemeberDetails(true);
+  }
+
   return (
     <div className="flex flex-col shadow-md p-10 rounded-md">
         <div className="-m-1.5 overflow-x-auto">
@@ -99,7 +111,11 @@ const MemberTable = () => {
                     {
                         sampleData.map((data, index) => {
                             return(
-                                <tr className="hover:bg-gray-100 text-sm" key={index}>
+                                <tr 
+                                    className="hover:bg-gray-100 text-sm" 
+                                    key={index}
+                                    onClick={() => handleRowClick(data)}
+                                >
                                     {/* <td className='px-3 py-4'>{getAvatar(data.name)}</td> */}
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 ">{data.name}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">{data.age}</td>
@@ -115,7 +131,6 @@ const MemberTable = () => {
                             )
                         })
                     }
-                    
                 </tbody>
                 </table>
             </div>

@@ -1,9 +1,13 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../public/assets/images/logo.png";
 import { sideBarItems } from "../constants";
+import { usePathname } from 'next/navigation';
 
 const SideBar = () => {
+  const pathname = usePathname()
   return (
     <div className="flex-none fixed top-0 start-0 bottom-0 z-[60] w-64 bg-white shadow-md pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
         <div className="px-6">
@@ -32,7 +36,7 @@ const SideBar = () => {
                     return(
                         <li key={index}>
                             <Link 
-                                className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                className={`flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 ${pathname === item.href ? 'border border-gray-600' :''}`}
                                 href={item.href}
                             >
                                 {item.icon}

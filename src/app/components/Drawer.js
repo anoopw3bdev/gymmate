@@ -1,30 +1,16 @@
 "use client"
 
-import { useRef, useEffect } from 'react';
-import Icons from '../../../public/assets/icons';
+import { useDetectOutsideClick } from '../hooks/useDetectOutsideClick';
 
 const Drawer = ({ isOpen, title, onClose, children }) => {
-    const drawerRef = useRef(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            console.log("insideee")
-            if (drawerRef.current && !drawerRef.current.contains(event.target)) {
-                onClose();
-            }
-        };
-
-        if (isOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [isOpen, onClose]);
+    const ref = useDetectOutsideClick(onClose);
 
     return (
-        <div className="hs-overlay hs-overlay-open:translate-x-0 translate-x-0 fixed top-0 end-0 transition-all duration-300 transform h-full max-w-xs w-full z-[80] bg-white border-s " tabIndex="1">
+        <div 
+            className="hs-overlay hs-overlay-open:translate-x-0 translate-x-0 fixed top-0 end-0 transition-all duration-300 transform h-full max-w-xs w-full z-[80] bg-white border-s " 
+            tabIndex="1"
+            ref={ref}
+        >
             <div className="flex justify-between items-center py-3 px-4 border-b">
                 <h3 className="font-bold text-gray-800">
                     {title}

@@ -2,16 +2,15 @@
 
 import { useDetectOutsideClick } from '../hooks/useDetectOutsideClick';
 
-const Drawer = ({ isOpen, title, onClose, children }) => {
+const Drawer = ({ title, onClose, children }) => {
     const ref = useDetectOutsideClick(onClose);
 
     return (
         <div 
-            className="hs-overlay hs-overlay-open:translate-x-0 translate-x-0 fixed top-0 end-0 transition-all duration-300 transform h-full max-w-xs w-full z-[80] bg-white border-s " 
-            tabIndex="1"
+            className="hs-overlay fixed top-0 end-0 h-full w-1/3 z-[80] bg-white shadow-2xl border-s" 
             ref={ref}
         >
-            <div className="flex justify-between items-center py-3 px-4 border-b">
+            <div className="flex justify-between items-center pt-7 pb-4 px-4 border-b">
                 <h3 className="font-bold text-gray-800">
                     {title}
                 </h3>

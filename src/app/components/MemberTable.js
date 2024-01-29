@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { getMembershipColor } from '../utils'
 import Drawer from './Drawer'
 import { sampleMembers } from '../constants'
+import { MemberDetails } from './MemberDetails'
 
 const MemberTable = () => {
   const [showMemberDetails, setShowMemeberDetails] = useState(false);
@@ -12,7 +13,6 @@ const MemberTable = () => {
   const handleRowClick = (data) => {
     setSelectedRow(data);
     setShowMemeberDetails(true);
-    console.log(showMemberDetails, "sohoow")
   }
 
   return (
@@ -46,7 +46,7 @@ const MemberTable = () => {
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">{data.age}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">{data.gender}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <span className={`${getMembershipColor(data.membershipType)} py-1 px-2 rounded-md text-white`}>
+                                        <span className={`border-2 w-24 flex justify-center ${getMembershipColor(data.membershipType)} py-1 px-2 rounded-md`}>
                                         {data.membershipType}
                                         </span>
                                     </td>
@@ -64,11 +64,13 @@ const MemberTable = () => {
         {
             showMemberDetails &&
             <Drawer
-                isOpen={showMemberDetails}
                 title="Member details"
                 onClose={
                    () => setShowMemeberDetails(false)
-                } 
+                }
+                children={
+                    <MemberDetails/>
+                }
             />
         }
     </div>

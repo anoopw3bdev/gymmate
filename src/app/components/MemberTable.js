@@ -3,83 +3,7 @@
 import { useState } from 'react'
 import { getMembershipColor } from '../utils'
 import Drawer from './Drawer'
-
-
-const sampleData = [
-    {
-        name: "Virat Kohli",
-        age: "32",
-        gender: "Male",
-        feePaid: true,
-        joinedOn: "14/01/2010",
-        location: "Kannur",
-        membershipType: "Platinum"
-    },{
-        name: "Virat Kohli",
-        age: "32",
-        gender: "Male",
-        feePaid: true,
-        joinedOn: "14/01/2010",
-        location: "Kannur",
-        membershipType: "Platinum"
-    },{
-        name: "Virat Kohli",
-        age: "32",
-        gender: "Male",
-        feePaid: true,
-        joinedOn: "14/01/2010",
-        location: "Kannur",
-        membershipType: "Gold"
-    },{
-        name: "Virat Kohli",
-        age: "32",
-        gender: "Male",
-        feePaid: true,
-        joinedOn: "14/01/2010",
-        location: "Kannur",
-        membershipType: "Platinum"
-    },{
-        name: "Virat Kohli",
-        age: "32",
-        gender: "Male",
-        feePaid: true,
-        joinedOn: "14/01/2010",
-        location: "Kannur",
-        membershipType: "Gold"
-    },{
-        name: "Virat Kohli",
-        age: "32",
-        gender: "Male",
-        feePaid: true,
-        joinedOn: "14/01/2010",
-        location: "Kannur",
-        membershipType: "Gold"
-    },{
-        name: "Virat Kohli",
-        age: "32",
-        gender: "Male",
-        feePaid: true,
-        joinedOn: "14/01/2010",
-        location: "Kannur",
-        membershipType: "Platinum"
-    },{
-        name: "Virat Kohli",
-        age: "32",
-        gender: "Male",
-        feePaid: true,
-        joinedOn: "14/01/2010",
-        location: "Kannur",
-        membershipType: "Platinum"
-    },{
-        name: "Virat Kohli",
-        age: "32",
-        gender: "Male",
-        feePaid: true,
-        joinedOn: "14/01/2010",
-        location: "Kannur",
-        membershipType: "Platinum"
-    }
-]
+import { sampleMembers } from '../constants'
 
 const MemberTable = () => {
   const [showMemberDetails, setShowMemeberDetails] = useState(false);
@@ -88,6 +12,7 @@ const MemberTable = () => {
   const handleRowClick = (data) => {
     setSelectedRow(data);
     setShowMemeberDetails(true);
+    console.log(showMemberDetails, "sohoow")
   }
 
   return (
@@ -109,7 +34,7 @@ const MemberTable = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                     {
-                        sampleData.map((data, index) => {
+                        sampleMembers.map((data, index) => {
                             return(
                                 <tr 
                                     className="hover:bg-gray-100 text-sm" 
@@ -136,6 +61,16 @@ const MemberTable = () => {
             </div>
             </div>
         </div>
+        {
+            showMemberDetails &&
+            <Drawer
+                isOpen={showMemberDetails}
+                title="Member details"
+                onClose={
+                   () => setShowMemeberDetails(false)
+                } 
+            />
+        }
     </div>
   )
 }

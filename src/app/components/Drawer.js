@@ -24,9 +24,7 @@ const Drawer = ({ isOpen, title, onClose, children }) => {
     }, [isOpen, onClose]);
 
     return (
-        <div>
-        {isOpen && (
-            <div className="hs-overlay hs-overlay-open:translate-x-0 translate-x-0 fixed top-0 end-0 transition-all duration-300 transform h-full max-w-xs w-full z-[80] bg-white border-s " tabIndex="1">
+        <div className="hs-overlay hs-overlay-open:translate-x-0 translate-x-0 fixed top-0 end-0 transition-all duration-300 transform h-full max-w-xs w-full z-[80] bg-white border-s " tabIndex="1">
             <div className="flex justify-between items-center py-3 px-4 border-b">
                 <h3 className="font-bold text-gray-800">
                     {title}
@@ -44,8 +42,6 @@ const Drawer = ({ isOpen, title, onClose, children }) => {
             <div className="p-4">
                 {children}
             </div>
-            </div>
-        )}
         </div>
     );
 };

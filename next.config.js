@@ -7,6 +7,12 @@ const nextConfig = {
             destination: '/dashboard/members',
             permanent: true,
           },
+          // temporary redirect
+          {
+            source: '/',
+            destination: '/dashboard/members',
+            permanent: true,
+          },
         ]
     },
 }

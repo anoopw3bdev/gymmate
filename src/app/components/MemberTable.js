@@ -41,7 +41,6 @@ const MemberTable = () => {
                                     key={index}
                                     onClick={() => handleRowClick(data)}
                                 >
-                                    {/* <td className='px-3 py-4'>{getAvatar(data.name)}</td> */}
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 ">{data.name}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">{data.age}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">{data.gender}</td>
@@ -69,7 +68,9 @@ const MemberTable = () => {
                    () => setShowMemeberDetails(false)
                 }
                 children={
-                    <MemberDetails/>
+                    <MemberDetails
+                        details={selectedRow}
+                    />
                 }
             />
         }

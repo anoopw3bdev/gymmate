@@ -1,4 +1,4 @@
-export const getAvatar = (name="") => {
+export const getFirstLetter = (name="") => {
     return name[0] || ""
 }
 

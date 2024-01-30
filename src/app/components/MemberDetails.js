@@ -1,10 +1,12 @@
 import { MembershipCard } from "./MembershipCard"
 
-export const MemberDetails = () => {
+export const MemberDetails = ({details}) => {
   return (
     <div>
         MemberDetails
-        <MembershipCard/>
+        <MembershipCard
+          details={details}
+        />
     </div>
   )
 }
